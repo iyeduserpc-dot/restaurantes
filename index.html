@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LÜMA — Restaurant élégant au Kef</title>
+  <meta name="description" content="LÜMA, restaurant à Av. Mongi Slim, Le Kef 7100. Cuisine raffinée, plats crémeux, poulet, pâtes. Note 4,8/5. Réservez au 97 337 588.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --black-soft: #111111;
+      --cream: #f6f1e8;
+      --cream-2: #efe8dc;
+      --gold: #c9a24b;
+      --gold-light: #e3c77a;
+      --text: #2a2a2a;
+      --muted: #777;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(0,0,0,0.12);
+      --radius: 18px;
+      --font-title: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: min(1180px, 92%); margin: 0 auto; }
+    .section { padding: 110px 0; }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    h1, h2, h3 { font-family: var(--font-title); font-weight: 600; line-height: 1.1; }
+    h2 { font-size: clamp(2.2rem, 4vw, 3.4rem); margin-bottom: 18px; }
+    p { color: #555; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: .3s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .btn-gold { background: var(--gold); color: #111; }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-ghost { border-color: rgba(255,255,255,.5); color: #fff; }
+    .btn-ghost:hover { background: #fff; color: #111; }
+    .btn-outline { border-color: var(--gold); color: var(--gold); padding: 10px 20px; }
+    .btn-outline:hover { background: var(--gold); color: #111; }
+    .btn-dark { background: #111; color: #fff; }
+    .btn-dark:hover { background: #333; }
+
+    /* HEADER */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 0;
+      transition: .3s;
+    }
+    .site-header.scrolled {
+      background: rgba(10,10,10,.92);
+      backdrop-filter: blur(12px);
+      padding: 12px 0;
+      box-shadow: 0 8px 30px rgba(0,0,0,.15);
+    }
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--font-title);
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 2px;
+    }
+    .logo span { color: var(--gold); }
+    .main-nav { display: flex; gap: 32px; }
+    .main-nav a {
+      color: rgba(255,255,255,.85);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      position: relative;
+    }
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -6px;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: .3s;
+    }
+    .main-nav a:hover::after { width: 100%; }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+      transform: scale(1.05);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,.58) 50%, rgba(0,0,0,.35) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      max-width: 720px;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      margin-bottom: 20px;
+    }
+    .hero h1 span {
+      color: var(--gold);
+      font-style: italic;
+    }
+    .hero-text {
+      color: rgba(255,255,255,.82);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin-bottom: 32px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-rating {
+      margin-top: 38px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,.85);
+      font-size: .85rem;
+    }
+    .stars { color: var(--gold); letter-spacing: 2px; }
+    .hero-scroll {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.6);
+      font-size: .7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    /* ABOUT */
+    .about { background: var(--cream); }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+    .about-image { position: relative; }
+    .about-image img {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      height: 560px;
+      object-fit: cover;
+      width: 100%;
+    }
+    .about-image::before {
+      content: '';
+      position: absolute;
+      inset: -18px -18px 18px 18px;
+      border: 1px solid var(--gold);
+      border-radius: var(--radius);
+      z-index: -1;
+    }
+    .stats {
+      display: flex;
+      gap: 36px;
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(0,0,0,.08);
+    }
+    .stats strong {
+      display: block;
+      font-family: var(--font-title);
+      font-size: 2.2rem;
+      color: #111;
+    }
+    .stats span {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+    }
+
+    /* SPECIALITES */
+    .specialties { background: #fff; }
+    .section-head {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 60px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,.06);
+      transition: .4s;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(0,0,0,.12);
+    }
+    .card-img { height: 230px; overflow: hidden; }
+    .card-img img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: .6s;
+    }
+    .card:hover .card-img img { transform: scale(1.08); }
+    .card-body { padding: 24px; }
+    .card-body h3 { font-size: 1.5rem; margin-bottom: 8px; }
+    .card-body p { font-size: .9rem; }
+    .tag {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    /* MENU SECTION */
+    .menu-section { background: var(--black); color: #fff; }
+    .menu-section .section-head h2 { color: #fff; }
+    .menu-section .section-head p { color: rgba(255,255,255,.7); }
+    
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 50px 40px;
+    }
+    .menu-category {
+      margin-bottom: 30px;
+    }
+    .menu-category h3 {
+      font-size: 1.8rem;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(201,162,75,.3);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .menu-category h4 {
+      font-size: 1.2rem;
+      color: var(--cream-2);
+      margin-top: 15px;
+      margin-bottom: 10px;
+      font-family: var(--font-title);
+      font-style: italic;
+    }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+      padding-bottom: 5px;
+      border-bottom: 1px dotted rgba(255,255,255,.1);
+    }
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+    .menu-item-info {
+      flex: 1;
+      padding-right: 15px;
+    }
+    .menu-item-name {
+      font-weight: 600;
+      color: #fff;
+      font-size: .95rem;
+    }
+    .menu-item-desc {
+      font-size: .75rem;
+      color: rgba(255,255,255,.5);
+      display: block;
+      margin-top: 2px;
+      line-height: 1.3;
+    }
+    .menu-item-price {
+      font-family: var(--font-title);
+      font-size: 1.1rem;
+      color: var(--gold);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .menu-item.new::after {
+      content: 'NEW';
+      font-size: .5rem;
+      background: var(--gold);
+      color: #111;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+      font-family: var(--font-body);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* AVIS */
+    .reviews { background: var(--black-soft); color: #fff; }
+    .reviews .eyebrow { color: var(--gold-light); }
+    .reviews h2 { color: #fff; }
+    .reviews p { color: rgba(255,255,255,.7); }
+    .review-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .rating-big { text-align: center; }
+    .rating-big strong {
+      display: block;
+      font-family: var(--font-title);
+      font-size: 6rem;
+      line-height: 1;
+      color: var(--gold);
+    }
+    .rating-big .stars { font-size: 1.4rem; }
+    .rating-big span {
+      display: block;
+      margin-top: 10px;
+      color: rgba(255,255,255,.65);
+    }
+    .review-quote {
+      border-left: 2px solid var(--gold);
+      padding-left: 30px;
+    }
+    .review-quote p {
+      font-family: var(--font-title);
+      font-size: 1.8rem;
+      line-height: 1.4;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+    .review-quote cite {
+      color: var(--gold-light);
+      font-size: .8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-style: normal;
+    }
+
+    /* INFOS */
+    .infos { background: var(--cream); }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .info-card {
+      background: #fff;
+      padding: 36px;
+      border-radius: var(--radius);
+      box-shadow: 0 10px 40px rgba(0,0,0,.05);
+      border-bottom: 3px solid var(--gold);
+    }
+    .info-card h3 { font-size: 1.6rem; margin-bottom: 14px; }
+    .info-card a { color: var(--gold); font-weight: 600; font-size: .85rem; }
+    .info-card p { margin-bottom: 8px; }
+
+    /* CONTACT */
+    .contact { background: #fff; }
+    .contact-form {
+      background: var(--cream);
+      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .contact-form label {
+      display: block;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      color: #333;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 12px;
+      font-family: var(--font-body);
+      font-size: .9rem;
+      margin-top: 8px;
+      background: #fff;
+      outline: none;
+      transition: .3s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,162,75,.15);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .form-note {
+      font-size: .7rem;
+      color: var(--muted);
+      margin-top: 14px;
+    }
+
+    /* MAP */
+    .map-section iframe {
+      width: 100%;
+      height: 420px;
+      border: 0;
+      filter: grayscale(100%) contrast(1.1);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #fff;
+      padding: 70px 0 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 50px;
+      margin-bottom: 50px;
+    }
+    footer .logo { display: inline-block; margin-bottom: 18px; }
+    footer p, footer a {
+      color: rgba(255,255,255,.65);
+      font-size: .85rem;
+    }
+    footer h4 {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    footer a { display: block; margin-bottom: 10px; transition: .3s; }
+    footer a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 24px;
+      text-align: center;
+    }
+
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .split, .review-grid { grid-template-columns: 1fr; gap: 50px; }
+      .about-image img { height: 450px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .menu-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .main-nav {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: rgba(10,10,10,.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 28px;
+        transition: .4s;
+      }
+      .main-nav.open { right: 0; }
+      .main-nav a { font-size: 1rem; }
+      .menu-toggle { display: block; }
+      .nav-actions .btn-outline { display: none; }
+      .cards { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .section { padding: 80px 0; }
+      .hero h1 { font-size: 3.2rem; }
+      .stats { gap: 20px; }
+      .stats strong { font-size: 1.6rem; }
+    }
+    /* Admin Panel Styles */
+.admin-item-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 100px 40px;
+  gap: 10px;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #eee;
+}
+.admin-item-row input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  width: 100%;
+}
+.admin-item-row button {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+.admin-item-row button:hover { background: #cc0000; }
+.admin-category-title {
+  font-weight: bold;
+  margin: 20px 0 10px;
+  color: #c9a24b;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="header">
+    <div class="container nav-wrap">
+      <a href="#accueil" class="logo">LÜMA<span>.</span></a>
+      <nav class="main-nav" id="mainNav">
+        <a href="#apropos">À propos</a>
+        <a href="#specialites">Spécialités</a>
+        <a href="#menu">Menu</a>
+        <a href="#avis">Avis</a>
+        <a href="#infos">Infos</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="tel:+21697337588" class="btn btn-outline">97 337 588</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="accueil" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <p class="eyebrow">Restaurant · Le Kef</p>
+      <h1>L'élégance à la table de <span>LÜMA</span></h1>
+      <p class="hero-text">
+        Une cuisine moderne, généreuse et crémeuse au cœur du Kef. Poulet, pâtes, sauces signature et saveurs inoubliables.
+      </p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-gold">Découvrir la carte</a>
+        <a href="tel:+21697337588" class="btn btn-ghost">Réserver par téléphone</a>
+      </div>
+      <div class="hero-rating">
+        <div class="stars">★★★★★</div>
+        <span>4,8/5 · 25 avis Google</span>
+      </div>
+    </div>
+    <div class="hero-scroll">Faites défiler</div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="apropos" class="section about">
+    <div class="container split">
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80" alt="Intérieur élégant du restaurant LÜMA">
+      </div>
+      <div class="about-text reveal">
+        <p class="eyebrow">Bienvenue chez LÜMA</p>
+        <h2>Une expérience culinaire raffinée au Kef</h2>
+        <p>
+          Situé sur l’Av. Mongi Slim, LÜMA vous accueille dans une ambiance moderne et chaleureuse.
+          Notre cuisine met à l’honneur les saveurs crémeuses, les viandes tendres et les plats généreux,
+          préparés avec soin pour chaque convive.
+        </p>
+        <p style="margin-top:16px;">
+          Que ce soit pour un déjeuner, un dîner ou une occasion spéciale, profitez d’un service attentionné
+          et d’une atmosphère élégante, ouverte jusqu’à minuit.
+        </p>
+        <div class="stats">
+          <div>
+            <strong>4,8</strong>
+            <span>Note Google</span>
+          </div>
+          <div>
+            <strong>25</strong>
+            <span>Avis clients</span>
+          </div>
+          <div>
+            <strong>20–30</strong>
+            <span>DT / personne</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPÉCIALITÉS -->
+  <section id="specialites" class="section specialties">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Nos incontournables</p>
+        <h2>Spécialités & plats populaires</h2>
+        <p>
+          Des assiettes pensées pour éveiller les sens, préparées avec des produits frais
+          et une touche crémeuse signature.
+        </p>
+      </div>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80" alt="Roulé de poulet et légumes">
+          </div>
+          <div class="card-body">
+            <h3>Roulé de Poulet et Légumes</h3>
+            <p>Un poulet tendre roulé avec des légumes de saison, cuit avec précision et servi avec une sauce onctueuse.</p>
+            <span class="tag">Populaire</span>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=800&q=80" alt="Sauce crémeuse">
+          </div>
+          <div class="card-body">
+            <h3>La Sauce Crémeuse</h3>
+            <p>Notre signature : une sauce riche, douce et parfumée qui accompagne idéalement nos plats.</p>
+            <span class="tag">Signature</span>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=800&q=80" alt="Poulet à la crème et champignons">
+          </div>
+          <div class="card-body">
+            <h3>Poulet à la crème et champignons</h3>
+            <p>Un classique réconfortant : poulet moelleux, champignons savoureux et sauce crémeuse.</p>
+            <span class="tag">Crémeux</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" class="section menu-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Notre Carte</p>
+        <h2>Le Menu LÜMA</h2>
+        <p>Découvrez notre sélection de plats, boissons et desserts préparés avec passion.</p>
+      </div>
+
+      <div class="menu-grid">
+        <!-- Petit Déjeuner -->
+        <div class="menu-category reveal">
+          <h3>Petit Déjeuner</h3>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Express</span>
+              <span class="menu-item-desc">Café ou thé au choix, eau 0.5L, viennoiserie au choix, jus</span>
+            </div>
+            <span class="menu-item-price">10 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Maison</span>
+              <span class="menu-item-desc">Café ou thé au choix, eau 0.5L, viennoiserie au choix, jus, toasts, beurre et ses trois noisettes (confiture, miel, chocolat)</span>
+            </div>
+            <span class="menu-item-price">15 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Matin Salé</span>
+              <span class="menu-item-desc">Café ou thé au choix, eau 0.5L, viennoiserie au choix, jus, omelette au choix ou œuf au plat, 2 mini pains</span>
+            </div>
+            <span class="menu-item-price">17 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Continental</span>
+              <span class="menu-item-desc">Café ou thé au choix, eau 0.5L, viennoiserie aux choix, jus, pancake, miel, nutella, yaourt, salade de fruits</span>
+            </div>
+            <span class="menu-item-price">17 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">British</span>
+              <span class="menu-item-desc">Café ou thé au choix, eau 0.5L, viennoiserie aux choix, jus, toast, beurre, saucisses, œuf à la coque, assiette de charcuterie</span>
+            </div>
+            <span class="menu-item-price">17 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">LÜMA</span>
+              <span class="menu-item-desc">Café ou thé au choix, viennoiserie aux choix, salade de fruit, yaourt, maison, œuf et huile d'olive, assortiment de pain maison, miel, eau 0.5L</span>
+            </div>
+            <span class="menu-item-price">22 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">LÜMA Duo</span>
+              <span class="menu-item-desc">2 Café ou thé aux choix, 2 viennoiseries, assiette de charcuterie, 2 ftiras, 2 salades de fruits, 2 yaourts maison, 2 œufs au plat et huile d'olive, assortiment de pain maison, miel, eau 1L</span>
+            </div>
+            <span class="menu-item-price">40 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Le Pain Perdu</span>
+              <span class="menu-item-desc">Café ou thé au choix, salade de fruit, yaourt maison, pain perdu au chocolat, viennoiserie, jus, eau 0.5L</span>
+            </div>
+            <span class="menu-item-price">22 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Le Tunisien</span>
+              <span class="menu-item-desc">Café ou thé au choix, viennoiserie au choix, eau 0.5L, plat tunisien, yaourt maison, jus, salade de fruits, corbeille de pain</span>
+            </div>
+            <span class="menu-item-price">22 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Le Complet</span>
+              <span class="menu-item-desc">Café ou thé au choix, jus, yaourt maison, pancakes, 2 minis pains, variété de charcuterie, fromages, omelettes au choix, assortiments de (beurre, nutella, confiture, miel, chamia, harissa, mayonnaise, thon, salade tunisienne, huile d'olive, banane, salade de fruit) eau 0.5L, viennoiserie</span>
+            </div>
+            <span class="menu-item-price">25 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Méditerranéen</span>
+              <span class="menu-item-desc">2 Café ou thé au choix, 2 jus aux choix, eau 1L, 2 viennoiseries, beurre, miel, 2 tabouna ou petit pain, 2 merguez, 2 œufs, chakchouka, escalope panée</span>
+            </div>
+            <span class="menu-item-price">40 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Brunch</span>
+              <span class="menu-item-desc">2 Café ou thé au choix, viennoiseries aux choix, 2 jus frais, yaourt, dattes farcie, tartine, beurre, confiture, miel, omelette, charcuterie, salade de fruit, pancake roulé, eau 1L</span>
+            </div>
+            <span class="menu-item-price">45 DT</span>
+          </div>
+        </div>
+
+        <!-- Salades, Brika & Soupes -->
+        <div class="menu-category reveal">
+          <h3>Salades, Brika & Soupes</h3>
+          <h4>Les Salades</h4>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Tunisienne</span>
+              <span class="menu-item-desc">Tomate, concombre, oignon, poivron, olives, œuf dur, thon</span>
+            </div>
+            <span class="menu-item-price">7 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Salade Mechouia</span>
+            </div>
+            <span class="menu-item-price">7 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Trio de Salades</span>
+              <span class="menu-item-desc">Mechouia, Tunisienne, Omeh Houria</span>
+            </div>
+            <span class="menu-item-price">8 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Salade Niçoise</span>
+              <span class="menu-item-desc">Des légumes colorés, œuf dur, tomates, olives, thon</span>
+            </div>
+            <span class="menu-item-price">12 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Salade César</span>
+              <span class="menu-item-desc">Poulet, laitue, maïs, tomates, pain croûton, parmesan, sauce césar</span>
+            </div>
+            <span class="menu-item-price">14 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Salade Fruit de Mer</span>
+              <span class="menu-item-desc">Fruits de mer sautés à l'ail, laitue, tomates, maïs, olives, parmesan, sauce tartare</span>
+            </div>
+            <span class="menu-item-price">20 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Salade Bistrot</span>
+              <span class="menu-item-desc">Jambon fumé, épinards sautés, champignons, maïs, laitue, courgette grillé, aubergine grillé, fromage</span>
+            </div>
+            <span class="menu-item-price">17 DT</span>
+          </div>
+
+          <h4>Brika</h4>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Brika à l'œuf</span>
+            </div>
+            <span class="menu-item-price">5 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Brika Thon Œuf</span>
+            </div>
+            <span class="menu-item-price">6 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Brika Viande Hachée</span>
+            </div>
+            <span class="menu-item-price">8 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Brika Chevrette</span>
+            </div>
+            <span class="menu-item-price">9 DT</span>
+          </div>
+
+          <h4>Soupe</h4>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Soupe Chevrette</span>
+            </div>
+            <span class="menu-item-price">15 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Soupe Poulpe</span>
+            </div>
+            <span class="menu-item-price">16 DT</span>
+          </div>
+        </div>
+
+        <!-- Pizzas & Fromages -->
+        <div class="menu-category reveal">
+          <h3>Pizzas & Fromages</h3>
+          <h4>Les Pizzas</h4>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Margherita</span>
+              <span class="menu-item-desc">Sauce tomate, mozzarella, basilic et origan</span>
+            </div>
+            <span class="menu-item-price">15 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Régina</span>
+              <span class="menu-item-desc">Sauce tomate, mozzarella, jambon de dinde, champignons</span>
+            </div>
+            <span class="menu-item-price">18 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Vegetariana</span>
+              <span class="menu-item-desc">Sauce tomate, mozzarella, aubergines, courgette, poivron, artichauts, champignons</span>
+            </div>
+            <span class="menu-item-price">17 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Spinacina</span>
+              <span class="menu-item-desc">Sauce tomate, mozzarella, ricotta, épinards</span>
+            </div>
+            <span class="menu-item-price">17 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Tonno</span>
+              <span class="menu-item-desc">Sauce tomate, mozzarella, thon, oignons</span>
+            </div>
+            <span class="menu-item-price">17 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Romana</span>
+              <span class="menu-item-desc">Sauce tomate, mozzarella, anchois et câpres</span>
+            </div>
+            <span class="menu-item-price">20 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Patatine</span>
+              <span class="menu-item-desc">Sauce tomate, mozzarella, frites</span>
+            </div>
+            <span class="menu-item-price">16 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Pesto</span>
+              <span class="menu-item-desc">Sauce tomate, mozzarella, tomates fraîches, sauce pesto, pignons</span>
+            </div>
+            <span class="menu-item-price">24 DT</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <span class="menu-item-name">Hollywood</span>
+              <span class="menu-item-desc">Sauce tomate, mozzarella, thon, persil, olives noires, tomates en tranche</span>
+            </div>
+            <span class="menu-item-price">24 DT</span>
+          </div>
+
+          <h4>Les Fromages</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Comté</span></div><span class="menu-item-price">5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Pecorino</span></div><span class="menu-item-price">4 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Parmigiano</span></div><span class="menu-item-price">4 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Scamorza</span></div><span class="menu-item-price">3.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Gruyère</span></div><span class="menu-item-price">4 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Bebelechon</span></div><span class="menu-item-price">3.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Camembert</span></div><span class="menu-item-price">3.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Raclette</span></div><span class="menu-item-price">4 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">F. Chèvre</span></div><span class="menu-item-price">4 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Edam</span></div><span class="menu-item-price">3.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Gouda</span></div><span class="menu-item-price">3.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Cheddar</span></div><span class="menu-item-price">3.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">La Pavlova</span></div><span class="menu-item-price">4 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Roquefort</span></div><span class="menu-item-price">3.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Gorgonzola</span></div><span class="menu-item-price">3.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Ricotta</span></div><span class="menu-item-price">2.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Sicilien</span></div><span class="menu-item-price">2.5 DT</span></div>
+        </div>
+
+        <!-- Pâtes & Riz -->
+        <div class="menu-category reveal">
+          <h3>Pâtes & Riz</h3>
+          <h4>Les Pâtes</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Puttanesca</span></div><span class="menu-item-price">18 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Carbonara</span></div><span class="menu-item-price">18 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Bolognaise</span></div><span class="menu-item-price">20 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Spaghetti aux Fruits de Mer</span></div><span class="menu-item-price">25 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Spaghetti aux Crevettes</span></div><span class="menu-item-price">32 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Spaghetti aux Calamar Farcie</span></div><span class="menu-item-price">35 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Spaghetti 4 Fromages</span></div><span class="menu-item-price">28 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Tagliatelles Carbonara</span><span class="menu-item-desc">Poulet, sauce blanche, champignons</span></div><span class="menu-item-price">25 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Tagliatelle Norvégienne</span><span class="menu-item-desc">Sauce rosée, crevettes, ail, basilic</span></div><span class="menu-item-price">28 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Tagliatelle Sauce Fromage</span><span class="menu-item-desc">Sauce blanche, gruyère, raclette, mozzarella, grana padano</span></div><span class="menu-item-price">28 DT</span></div>
+          <p style="font-size:.7rem; color:#888; margin-top:10px; font-style:italic;">Le type de pâtes est modifiable sur simple demande.</p>
+
+          <h4>Riz</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Riz Fruits de Mer (Sauce Rouge)</span></div><span class="menu-item-price">25 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Riz Fruits de Mer (Sauce Blanche)</span></div><span class="menu-item-price">30 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Riz Poulet Champignons (Sauce Rouge)</span></div><span class="menu-item-price">24 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Riz Poulet Champignons (Sauce Blanche)</span></div><span class="menu-item-price">28 DT</span></div>
+        </div>
+
+        <!-- Les Plats -->
+        <div class="menu-category reveal">
+          <h3>Les Plats</h3>
+          <h4>Poulet</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Blanc de Poulet Grillé</span></div><span class="menu-item-price">18 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Blanc de Poulet Pané</span></div><span class="menu-item-price">20 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Poulet Sauce Champignons</span></div><span class="menu-item-price">22 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Poulet Farcie à l'Italienne (Cordon Bleu)</span></div><span class="menu-item-price">25 DT</span></div>
+
+          <h4>Poisson</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Dorade Grillé</span></div><span class="menu-item-price">22 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Loup Grillé</span></div><span class="menu-item-price">24 DT</span></div>
+
+          <h4>Fruit de Mer</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Fruits de Mer Sautés à l'Ail</span></div><span class="menu-item-price">29 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Fruits de Mer Sautés au Sauce Blanche</span></div><span class="menu-item-price">34 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Plateau Fruits de Mer (2 Personnes)</span></div><span class="menu-item-price">70 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Gratin Fruits de Mer</span></div><span class="menu-item-price">33 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Paella Fruits de Mer</span></div><span class="menu-item-price">35 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Paella Fruits de Mer (2 Personnes)</span></div><span class="menu-item-price">68 DT</span></div>
+
+          <h4>Lasagne & Viandes</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Lasagne Bolognaise</span></div><span class="menu-item-price">20 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Lasagne Fruits de Mer</span></div><span class="menu-item-price">25 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Grillade Mixte</span><span class="menu-item-desc">Merguez, foie, côtelettes</span></div><span class="menu-item-price">35 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Filet de Veau</span></div><span class="menu-item-price">38 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Filet Mignon aux 3 Sauces</span></div><span class="menu-item-price">42 DT</span></div>
+        </div>
+
+        <!-- Ojja & Omelette -->
+        <div class="menu-category reveal">
+          <h3>Ojja & Omelette</h3>
+          <h4>Ojja</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Ojja Merguez</span></div><span class="menu-item-price">18 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Ojja Escalope</span></div><span class="menu-item-price">18 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Ojja Fruits de Mer</span></div><span class="menu-item-price">25 DT</span></div>
+          <h4>Omelette</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Omelette au Fromage</span></div><span class="menu-item-price">6 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Omelette Thon ou Jambon</span></div><span class="menu-item-price">7.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Omelette Pepperoni</span></div><span class="menu-item-price">8 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Omelette Fruits de Mer</span></div><span class="menu-item-price">14 DT</span></div>
+        </div>
+
+        <!-- Crêpes & Gaufres -->
+        <div class="menu-category reveal">
+          <h3>Crêpes & Gaufres</h3>
+          <h4>Crêpes Sucrées Panées (New!)</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">La Tipique</span><span class="menu-item-desc">Mascarpone, nutella</span></div><span class="menu-item-price">15 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">L'Amusante</span><span class="menu-item-desc">Mascarpone, oreo, fruits de saison</span></div><span class="menu-item-price">16 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">La Sympathique</span><span class="menu-item-desc">Mascarpone, nutella, fruits secs</span></div><span class="menu-item-price">16 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">L'Étonnante</span><span class="menu-item-desc">Ricotta, noix, miel, amandes effilées</span></div><span class="menu-item-price">16 DT</span></div>
+
+          <h4>Crêpes Salées Panées (New!)</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">La Tendance</span><span class="menu-item-desc">Thon, fromage mozzarella, tomate, laitue</span></div><span class="menu-item-price">15 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Japonaise</span><span class="menu-item-desc">Poulet, laitue, tomate, mozzarella</span></div><span class="menu-item-price">16 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">La Piquante</span><span class="menu-item-desc">Thon, fromage, harissa, œuf, tomate, mozzarella, laitue</span></div><span class="menu-item-price">16 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">L'Innovante</span><span class="menu-item-desc">Crevette, 3 fromages, laitue, tomate, mozzarella</span></div><span class="menu-item-price">18 DT</span></div>
+
+          <h4>Tagliatelle Nutella (Crêpes) (New!)</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Nutella, Mascarpone</span></div><span class="menu-item-price">15 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Nutella, Mascarpone, Oreo</span></div><span class="menu-item-price">16 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Nutella, Mascarpone, Spéculoos</span></div><span class="menu-item-price">16 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Nutella, Mascarpone, Fruits de Saison</span></div><span class="menu-item-price">16 DT</span></div>
+
+          <h4>Gaufres Sucrées</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Gaufre Chocolat</span></div><span class="menu-item-price">8 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Gaufre Nutella</span></div><span class="menu-item-price">10 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Gaufre Nutella Banane</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Gaufre Nutella, Fruits de Saison</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Gaufre Nutella Banane, Fruits Secs</span></div><span class="menu-item-price">14 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Gaufre Big Chock</span><span class="menu-item-desc">Nutella, fruit secs, M&M's, oreo, boule de glace</span></div><span class="menu-item-price">16 DT</span></div>
+
+          <h4>Gaufres Salées</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Gaufre Thon, Fromage</span></div><span class="menu-item-price">10 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Gaufre Jambon, Fromage</span></div><span class="menu-item-price">10 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Gaufre Mexicaine</span><span class="menu-item-desc">Viande hachée, pepperoni, fromage</span></div><span class="menu-item-price">15 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Gaufre Fruits de Mer, Fromage</span></div><span class="menu-item-price">17 DT</span></div>
+        </div>
+
+        <!-- Pancakes & Pain Perdu -->
+        <div class="menu-category reveal">
+          <h3>Pancakes & Pain Perdu</h3>
+          <h4>Pancakes</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Pancake Chocolat</span></div><span class="menu-item-price">7.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Pancake Nutella</span></div><span class="menu-item-price">10 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Pancake Nutella Banane</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Pancake Nutella, Fruits de Saison</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Pancake Nutella Banane, Fruits Secs</span></div><span class="menu-item-price">13.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Pancake Big Chock</span><span class="menu-item-desc">Nutella, fruit secs, M&M's, oreo, boule de glace</span></div><span class="menu-item-price">16 DT</span></div>
+
+          <h4>Pain Perdu (New!)</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Douceur Dorée</span><span class="menu-item-desc">Sauce caramel, banane, noix</span></div><span class="menu-item-price">16 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Chocolat d'Amour</span><span class="menu-item-desc">Nutella, glace vanille</span></div><span class="menu-item-price">20 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Douceur de Paris</span><span class="menu-item-desc">Miel, fruit de saison, glace vanille</span></div><span class="menu-item-price">16 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Berry Belle</span><span class="menu-item-desc">Crème cheese, fruits de bois, sauce pistache</span></div><span class="menu-item-price">22 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Velour Vert</span><span class="menu-item-desc">Kuneefa, pistache concassée, glace</span></div><span class="menu-item-price">24 DT</span></div>
+        </div>
+
+        <!-- Sandwichs -->
+        <div class="menu-category reveal">
+          <h3>Les Sandwichs</h3>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Makloub / Libanais Thon</span></div><span class="menu-item-price">8.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Makloub / Libanais Escalope Grillé</span></div><span class="menu-item-price">9.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Makloub / Libanais Escalope Panné</span></div><span class="menu-item-price">10.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Makloub / Libanais Merguez</span></div><span class="menu-item-price">10.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Makloub / Libanais Mexicain</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Baguette Farcie</span></div><span class="menu-item-price">14 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Supplément (Fromage blanc, Gruyère, Frittes)</span></div><span class="menu-item-price">3 DT</span></div>
+        </div>
+
+        <!-- Boissons & Desserts -->
+        <div class="menu-category reveal">
+          <h3>Boissons & Desserts</h3>
+          <h4>Protéine Shake</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Énergie</span><span class="menu-item-desc">Banane, datte, fruits secs, miel</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Starter</span><span class="menu-item-desc">Yaourt glacé, banane, fruits secs, datte, miel, granola</span></div><span class="menu-item-price">14 DT</span></div>
+
+          <h4>Smoothies</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Blue Hawai</span><span class="menu-item-desc">Curaçao bleu, ananas, noix de coco, base smoothie</span></div><span class="menu-item-price">10 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Strawberry</span><span class="menu-item-desc">Fraise, banane, base smoothie</span></div><span class="menu-item-price">11 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Banane Kiwi</span><span class="menu-item-desc">Banane, kiwi, base smoothie</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Pina Colada</span><span class="menu-item-desc">Ananas, noix de coco, miel</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Mangue</span></div><span class="menu-item-price">13 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Fruits de Bois</span></div><span class="menu-item-price">13 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Tropical</span><span class="menu-item-desc">Jus d'orange, ananas, mangue, base smoothie</span></div><span class="menu-item-price">13 DT</span></div>
+
+          <h4>Milkshake Crunchy</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Strawberry</span><span class="menu-item-desc">Fraise, glace</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Snickers</span><span class="menu-item-desc">Snickers, glace</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Oreo</span><span class="menu-item-desc">Oreo, glace</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Spéculoos</span><span class="menu-item-desc">Spéculoos, glace</span></div><span class="menu-item-price">14 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Nutella</span><span class="menu-item-desc">Nutella, glace</span></div><span class="menu-item-price">14 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Ferrero Rocher</span><span class="menu-item-desc">Ferrero rocher, glace</span></div><span class="menu-item-price">16 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Signature LÜMA</span><span class="menu-item-desc">Crunchy pistache</span></div><span class="menu-item-price">18 DT</span></div>
+
+          <h4>Mojitos</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Virgin</span><span class="menu-item-desc">Menthe fraîche, citron frais, sirop mojito</span></div><span class="menu-item-price">8 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Apple</span><span class="menu-item-desc">Menthe fraîche, citron frais, sirop mojito, sirop de pomme</span></div><span class="menu-item-price">9 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Deep Blue</span><span class="menu-item-desc">Menthe fraîche, citron frais, sirop mojito, curaçao bleu</span></div><span class="menu-item-price">9 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Passion Fruits</span><span class="menu-item-desc">Menthe fraîche, framboise, citron frais, fruits de la passion</span></div><span class="menu-item-price">9 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Framboise</span><span class="menu-item-desc">Menthe fraîche, framboise, citron frais, sirop mojito</span></div><span class="menu-item-price">9 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Pina Colada</span><span class="menu-item-desc">Menthe fraîche, ananas, noix de coco, sirop mojito</span></div><span class="menu-item-price">9 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Énergétique</span><span class="menu-item-desc">Menthe fraîche, citron frais, sirop mojito, boisson énergétique</span></div><span class="menu-item-price">12 DT</span></div>
+
+          <h4>Les Jus Frais</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Jus d'Orange</span></div><span class="menu-item-price">6 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Citronnade</span></div><span class="menu-item-price">6 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Citronnade aux Amandes</span></div><span class="menu-item-price">8 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Jus de Fraise</span></div><span class="menu-item-price">7 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Jus de Pêche</span></div><span class="menu-item-price">7 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Lait de Poule</span></div><span class="menu-item-price">8 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Jus de Kiwi</span></div><span class="menu-item-price">9 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Jus d'Ananas</span></div><span class="menu-item-price">7 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Mixta (Deux jus au choix)</span></div><span class="menu-item-price">10 DT</span></div>
+
+          <h4>Cafés</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Expresso</span></div><span class="menu-item-price">3 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Expresso Américain</span></div><span class="menu-item-price">3.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Capucin</span></div><span class="menu-item-price">3.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Chocolat au Lait</span></div><span class="menu-item-price">4 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Café Crème</span></div><span class="menu-item-price">4 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Capucin Nestlé</span></div><span class="menu-item-price">4 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Café Liégeois</span></div><span class="menu-item-price">10 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Café Pistache</span><span class="menu-item-desc">Servi avec une pièce de portoricaine</span></div><span class="menu-item-price">12 DT</span></div>
+
+          <h4>Chocolat et Douceurs</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Chocolat Chaud</span></div><span class="menu-item-price">7 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Chocolat Chaud Banane à la Crème Chantilly, Fruits Secs</span></div><span class="menu-item-price">8.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Chocolat Chaud Noisette</span></div><span class="menu-item-price">10 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Chocolat Chaud Spéculoos</span></div><span class="menu-item-price">12 DT</span></div>
+
+          <h4>Turkish Coffee</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">L'Instant</span><span class="menu-item-desc">Café turc authentique accompagné de samsa chocolat noisette</span></div><span class="menu-item-price">8 DT</span></div>
+
+          <h4>Iced Coffee</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Iced Coffee</span></div><span class="menu-item-price">8 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Iced Spanish Latte</span></div><span class="menu-item-price">10 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Iced Salted Caramel Latte</span></div><span class="menu-item-price">10 DT</span></div>
+
+          <h4>Thé</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Thé à la Menthe Fraîche</span></div><span class="menu-item-price">2.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Thé Infusion</span></div><span class="menu-item-price">3 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Thé aux Amandes</span></div><span class="menu-item-price">6 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Thé aux Pignons</span></div><span class="menu-item-price">8 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Signature Gourmande</span><span class="menu-item-desc">Thé vert à la menthe fraîche accompagné de samsa chocolat noisette et d'une sélection raffinée de fruits secs</span></div><span class="menu-item-price">10 DT</span></div>
+
+          <h4>Soft Drinks</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Eau 0.5L</span></div><span class="menu-item-price">1.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Eau 1L</span></div><span class="menu-item-price">2.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Eau Gazéifiée</span></div><span class="menu-item-price">3 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Soda</span></div><span class="menu-item-price">3.5 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Indien</span><span class="menu-item-desc">Soda + arôme au choix</span></div><span class="menu-item-price">4.5 DT</span></div>
+
+          <h4>Frappuccino</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Caramel</span></div><span class="menu-item-price">8 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Nutella</span></div><span class="menu-item-price">9 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Oreo</span></div><span class="menu-item-price">9 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Pistache</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">LÜMA</span><span class="menu-item-desc">Nutella, pistache</span></div><span class="menu-item-price">14 DT</span></div>
+
+          <h4>Jwejjem</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Jwejjem (Mini)</span></div><span class="menu-item-price">8 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Jwejjem</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Jwejjem LÜMA</span></div><span class="menu-item-price">16 DT</span></div>
+
+          <h4>Dessert</h4>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Assiette de Fruits</span></div><span class="menu-item-price">10 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Tiramisu</span></div><span class="menu-item-price">10 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Fondant</span></div><span class="menu-item-price">8 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Cheesecake Classique</span></div><span class="menu-item-price">8 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Cheesecake (Caramel, Nutella, Spéculoos)</span></div><span class="menu-item-price">10 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Banana Split</span></div><span class="menu-item-price">10 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Ice Cream</span></div><span class="menu-item-price">10 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Salade de Fruits</span></div><span class="menu-item-price">9 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Fraisier</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Saint Sébastien</span></div><span class="menu-item-price">12 DT</span></div>
+          <div class="menu-item"><div class="menu-item-info"><span class="menu-item-name">Cookies</span></div><span class="menu-item-price">12 DT</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVIS -->
+  <section id="avis" class="section reviews">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Avis Google</p>
+        <h2>Ils ont aimé LÜMA</h2>
+      </div>
+      <div class="review-grid">
+        <div class="rating-big reveal">
+          <strong>4,8</strong>
+          <div class="stars">★★★★★</div>
+          <span>25 avis Google</span>
+        </div>
+        <div class="review-quote reveal">
+          <p>« Une sauce crémeuse exceptionnelle, un service soigné et une ambiance très agréable. »</p>
+          <cite>— Avis client Google</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFOS -->
+  <section id="infos" class="section infos">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Informations pratiques</p>
+        <h2>Tout savoir avant votre visite</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-card reveal">
+          <h3>Adresse</h3>
+          <p>Av. Mongi Slim,<br>Le Kef 7100, Tunisie</p>
+          <a href="https://maps.google.com/?q=Av.+Mongi+Slim,+Le+Kef+7100,+Tunisie" target="_blank" rel="noopener">Ouvrir dans Google Maps</a>
+        </div>
+        <div class="info-card reveal">
+          <h3>Horaires</h3>
+          <p>Ouvert jusqu'à 00:00</p>
+          <p>Tous les jours</p>
+        </div>
+        <div class="info-card reveal">
+          <h3>Contact</h3>
+          <p><a href="tel:+21697337588">97 337 588</a></p>
+          <p>Prix moyen : 20–30 DT</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <div class="container split">
+      <div class="contact-info reveal">
+        <p class="eyebrow">Réservation</p>
+        <h2>Réservez votre table chez LÜMA</h2>
+        <p>
+          Pour une réservation, un événement ou une question, appelez-nous directement.
+          Notre équipe vous accueille avec plaisir.
+        </p>
+        <a href="tel:+21697337588" class="btn btn-gold" style="margin-top:26px;">Appeler le 97 337 588</a>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm">
+        <div class="form-row">
+          <label>Nom
+            <input type="text" placeholder="Votre nom" required>
+          </label>
+          <label>Téléphone
+            <input type="tel" placeholder="Votre numéro" required>
+          </label>
+        </div>
+        <label>Date & heure
+          <input type="datetime-local">
+        </label>
+        <label>Nombre de personnes
+          <input type="number" min="1" value="2">
+        </label>
+        <label>Message
+          <textarea rows="4" placeholder="Votre demande..."></textarea>
+        </label>
+        <button type="submit" class="btn btn-dark">Envoyer la demande</button>
+        <p class="form-note">* Demande non contractuelle. Nous vous confirmerons par téléphone.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="map-section">
+    <iframe
+      src="https://www.google.com/maps?q=Av.%20Mongi%20Slim%2C%20Le%20Kef%207100%2C%20Tunisie&output=embed"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Localisation de LÜMA au Kef">
+    </iframe>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <a href="#accueil" class="logo">LÜMA<span>.</span></a>
+        <p>Restaurant élégant au Kef. Cuisine moderne, saveurs crémeuses et accueil chaleureux.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <a href="#apropos">À propos</a>
+        <a href="#specialites">Spécialités</a>
+        <a href="#menu">Menu</a>
+        <a href="#avis">Avis</a>
+        <a href="#infos">Infos</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Av. Mongi Slim, Le Kef 7100</p>
+        <p><a href="tel:+21697337588">97 337 588</a></p>
+        <p>Ouvert jusqu'à 00:00</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> LÜMA. Tous droits réservés.</p>
+    </div>
+    <div>
+  <h4>Navigation</h4>
+  <a href="#apropos">À propos</a>
+  <a href="#specialites">Spécialités</a>
+  <a href="#menu">Menu</a>
+  <a href="#avis">Avis</a>
+  <a href="#infos">Infos</a>
+  <a href="#contact">Contact</a>
+  <!-- زر لوحة التحكم -->
+  <a href="#" onclick="openAdmin(); return false;" style="color:#c9a24b; margin-top:10px; display:inline-block;">⚙️ لوحة التحكم (Admin)</a>
+</div>
+  </footer>
+
+  <script>
+    // Header au scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Menu mobile
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    menuToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('open');
+    });
+    mainNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mainNav.classList.remove('open'));
+    });
+
+    // Animations au scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Année automatique
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Formulaire
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Merci ! Votre demande a bien été envoyée. Nous vous contacterons rapidement.');
+      form.reset();
+    });
+    // ===== 1. بيانات القائمة الافتراضية =====
+// يمكنك هنا تعديل الأطباق الأساسية التي ستظهر لجميع الزوار
+const defaultMenuData = [
+  {
+    category: "Petit Déjeuner",
+    items: [
+      { name: "Express", desc: "Café ou thé au choix, eau 0.5L, viennoiserie au choix, jus", price: "10 DT" },
+      { name: "Maison", desc: "Café ou thé au choix, eau 0.5L, viennoiserie au choix, jus, toasts, beurre et ses trois noisettes", price: "15 DT" },
+      { name: "Matin Salé", desc: "Café ou thé au choix, eau 0.5L, viennoiserie au choix, jus, omelette au choix ou œuf au plat, 2 mini pains", price: "17 DT" }
+    ]
+  },
+  {
+    category: "Les Pizzas",
+    items: [
+      { name: "Margherita", desc: "Sauce tomate, mozzarella, basilic et origan", price: "15 DT" },
+      { name: "Régina", desc: "Sauce tomate, mozzarella, jambon de dinde, champignons", price: "18 DT" },
+      { name: "Vegetariana", desc: "Sauce tomate, mozzarella, aubergines, courgette, poivron, artichauts, champignons", price: "17 DT" }
+    ]
+  },
+  {
+    category: "Les Pâtes",
+    items: [
+      { name: "Puttanesca", desc: "", price: "18 DT" },
+      { name: "Carbonara", desc: "", price: "18 DT" },
+      { name: "Bolognaise", desc: "", price: "20 DT" },
+      { name: "Tagliatelles Carbonara", desc: "Poulet, sauce blanche, champignons", price: "25 DT" }
+    ]
+  }
+];
+
+// ===== 2. استرجاع البيانات من الذاكرة أو استخدام الافتراضية =====
+let menuData = JSON.parse(localStorage.getItem('lumaMenuData')) || defaultMenuData;
+
+// ===== 3. دالة لعرض القائمة في الموقع =====
+function renderMenu() {
+  const menuContainer = document.querySelector('.menu-grid');
+  if (!menuContainer) return; // إذا لم تكن في صفحة تحتوي على قائمة
+
+  menuContainer.innerHTML = ''; // تفريغ القائمة الحالية
+
+  menuData.forEach(category => {
+    const catDiv = document.createElement('div');
+    catDiv.className = 'menu-category reveal visible'; // إضافة reveal لتعمل الأنيميشن
+    
+    let catHTML = `<h3>${category.category}</h3>`;
+    
+    category.items.forEach(item => {
+      catHTML += `
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <span class="menu-item-name">${item.name}</span>
+            ${item.desc ? `<span class="menu-item-desc">${item.desc}</span>` : ''}
+          </div>
+          <span class="menu-item-price">${item.price}</span>
+        </div>
+      `;
+    });
+    
+    catDiv.innerHTML = catHTML;
+    menuContainer.appendChild(catDiv);
+  });
+}
+
+// استدعاء الدالة عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', renderMenu);
+
+// ===== 4. منطق لوحة التحكم (Admin Panel) =====
+function openAdmin() {
+  const pwd = prompt("أدخل كلمة المرور للدخول إلى لوحة التحكم:");
+  if (pwd === "luma2024") { // يمكنك تغيير كلمة المرور من هنا
+    document.getElementById('adminModal').style.display = 'block';
+    renderAdminMenu();
+  } else if (pwd !== null) {
+    alert("كلمة المرور غير صحيحة!");
+  }
+}
+
+function closeAdmin() {
+  document.getElementById('adminModal').style.display = 'none';
+}
+
+function renderAdminMenu() {
+  const container = document.getElementById('adminMenuList');
+  container.innerHTML = '';
+
+  menuData.forEach((category, catIndex) => {
+    const catDiv = document.createElement('div');
+    catDiv.className = 'admin-category';
+    
+    let catHTML = `<div class="admin-category-title">${category.category} <button onclick="deleteCategory(${catIndex})" style="background:#ff4d4d; color:white; border:none; border-radius:4px; padding:2px 8px; cursor:pointer; font-size:0.7rem; float:right;">حذف القسم</button></div>`;
+    
+    category.items.forEach((item, itemIndex) => {
+      catHTML += `
+        <div class="admin-item-row">
+          <input type="text" value="${item.name}" onchange="updateItem(${catIndex}, ${itemIndex}, 'name', this.value)" placeholder="اسم الطبق">
+          <input type="text" value="${item.desc || ''}" onchange="updateItem(${catIndex}, ${itemIndex}, 'desc', this.value)" placeholder="الوصف (اختياري)">
+          <input type="text" value="${item.price}" onchange="updateItem(${catIndex}, ${itemIndex}, 'price', this.value)" placeholder="السعر">
+          <button onclick="deleteItem(${catIndex}, ${itemIndex})">حذف</button>
+        </div>
+      `;
+    });
+    
+    catHTML += `<button onclick="addItem(${catIndex})" style="margin-top:10px; background:#c9a24b; color:#111; border:none; padding:8px 15px; border-radius:6px; cursor:pointer; font-weight:bold;">+ إضافة طبق في هذا القسم</button>`;
+    
+    catDiv.innerHTML = catHTML;
+    container.appendChild(catDiv);
+  });
+}
+
+function updateItem(catIndex, itemIndex, field, value) {
+  menuData[catIndex].items[itemIndex][field] = value;
+}
+
+function deleteItem(catIndex, itemIndex) {
+  if (confirm("هل أنت متأكد من حذف هذا الطبق؟")) {
+    menuData[catIndex].items.splice(itemIndex, 1);
+    renderAdminMenu();
+  }
+}
+
+function addItem(catIndex) {
+  menuData[catIndex].items.push({ name: "طبق جديد", desc: "", price: "0 DT" });
+  renderAdminMenu();
+}
+
+function addCategoryPrompt() {
+  const catName = prompt("أدخل اسم القسم الجديد (مثال: Les Boissons):");
+  if (catName) {
+    menuData.push({ category: catName, items: [] });
+    renderAdminMenu();
+  }
+}
+
+function deleteCategory(catIndex) {
+  if (confirm("هل أنت متأكد من حذف هذا القسم بالكامل؟")) {
+    menuData.splice(catIndex, 1);
+    renderAdminMenu();
+  }
+}
+
+function saveMenu() {
+  localStorage.setItem('lumaMenuData', JSON.stringify(menuData));
+  alert("تم حفظ التغييرات بنجاح! سيتم تحديث الموقع الآن.");
+  renderMenu(); // تحديث القائمة في الصفحة الرئيسية
+  closeAdmin();
+}
+  </script>
+  <!-- ===== لوحة التحكم (Admin Panel) ===== -->
+<div id="adminModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; overflow-y:auto; padding:20px;">
+  <div style="background:#fff; max-width:900px; margin:40px auto; border-radius:18px; padding:30px; color:#333;">
+    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #c9a24b; padding-bottom:15px; margin-bottom:20px;">
+      <h2 style="font-family:'Cormorant Garamond', serif; margin:0; color:#111;">لوحة تحكم LÜMA</h2>
+      <button onclick="closeAdmin()" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:#777;">&times;</button>
+    </div>
+    
+    <div id="adminContent">
+      <p style="margin-bottom:15px; color:#666;">يمكنك هنا تعديل الأسعار والأطباق. (ملاحظة: التغييرات تُحفظ في متصفحك فقط للتجربة).</p>
+      <div id="adminMenuList"></div>
+      <div style="margin-top:20px; display:flex; gap:10px;">
+        <button onclick="addCategoryPrompt()" class="btn btn-outline" style="padding:10px 20px; font-size:0.8rem;">+ إضافة قسم جديد</button>
+        <button onclick="saveMenu()" class="btn btn-gold" style="padding:10px 20px; font-size:0.8rem;">حفظ التغييرات</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
